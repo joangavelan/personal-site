@@ -1,5 +1,6 @@
 ---
 import BaseHead from '../components/BaseHead.astro'
+import Hero from '../sections/hero.astro'
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts'
 ---
 
@@ -8,11 +9,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts'
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
-  <body>
-    <main class='p-10'>
-      <p class='text-7xl text-center mt-24 leading-[1.2]'>
-        Whereas disregard and contempt for human rights have resulted
-      </p>
-    </main>
+  <body class='bg-navyBlue'>
+    <Hero />
   </body>
 </html>
