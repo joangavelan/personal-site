@@ -31,3 +31,8 @@
 html {
   font-family: ChakraPetch;
 }
+
+img {
+  pointer-events: none;
+  user-select: none;
+}
