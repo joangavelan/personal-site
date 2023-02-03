@@ -1,0 +1,80 @@
+---
+import Heading from '../components/heading.astro'
+import { Icon } from 'astro-icon'
+import ChimboterosIcon from '../components/chimboteros-icon.astro'
+---
+
+<section
+  id='experience'
+  class='min-h-screen grid place-items-center px-7 py-20 md:py-0'
+>
+  <div class='max-w-[76rem] flex flex-col gap-20 md:gap-28'>
+    <!-- heading -->
+    <Heading title='Experience' />
+
+    <!-- main -->
+    <div class='flex flex-col md:flex-row space-between gap-16 xl:gap-28'>
+      <!-- content -->
+      <div
+        class='min-w-[20rem] flex flex-col gap-7 text-center md:text-left lg:pt-4'
+      >
+        <!-- headline -->
+        <div class='text-textClear mb-3 mx-auto md:mx-0'>
+          <div class='flex items-baseline gap-2.5 mb-3'>
+            <h3 class='text-2xl'>Chimboteros</h3>
+            <ChimboterosIcon />
+          </div>
+          <p>Jan 2021 - Feb 2023</p>
+        </div>
+
+        <!-- description -->
+        <p class='text-textDark leading-8 md:leading-9'>
+          I worked as a front-end developer in a team of recruits building the
+          beta version of a web platform aimed at promoting culture and tourism
+          in our region. My primary responsibilities were developing the
+          client-side of the application using technologies such as React and
+          managing technical tasks to meet the established goals for the
+          platform.
+        </p>
+        <!-- links -->
+        <div class='flex gap-3.5 mx-auto md:mx-0'>
+          <a href='https://chimboteros.pe' target='_blank'>
+            <Icon name='mdi:world-wide-web' />
+          </a>
+          <a href='https://www.facebook.com/chimboteros' target='_blank'>
+            <Icon name='ri:facebook-box-fill' />
+          </a>
+        </div>
+      </div>
+
+      <!-- masonry -->
+      <div
+        class='md:max-w-[37.5rem] md:max-h-[25.25rem] pt-5 lg:pt-0 lg:max-h-[31.25rem] grid grid-cols-2 grid-rows-3 gap-1 [&>div>img]:w-full [&>div>img]:h-full [&>div>img]:object-cover'
+      >
+        <!-- first -->
+        <div class='col-span-1 row-span-2'>
+          <img src='founders.jpeg' alt="chimbotero's founders" />
+        </div>
+        <!-- second -->
+        <div class='col-span-1 row-span-1'>
+          <img src='culturalismo-web-app.jpeg' alt='culturalismo web app' />
+        </div>
+        <!-- third -->
+        <div class='col-span-1 row-span-1'>
+          <img src='joan-gavelan.jpeg' alt='joan gavelan coding' />
+        </div>
+        <!-- fourth -->
+        <div class='col-span-2 row-span-1'>
+          <img src='internautas-team.jpeg' alt='internautas team' />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  [astro-icon] {
+    color: #e2e8ff;
+    width: 1.35rem;
+  }
+</style>
