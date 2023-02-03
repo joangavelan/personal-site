@@ -1,0 +1,52 @@
+---
+import Heading from '../components/heading.astro'
+import { Icon } from 'astro-icon'
+---
+
+<section id='about' class='min-h-screen grid place-items-center p-10'>
+  <div class='flex flex-col gap-8 md:gap-12 max-w-[50rem]'>
+    <!-- heading -->
+    <Heading title='About' />
+
+    <div class='flex flex-col gap-10 md:gap-6'>
+      <!-- about -->
+      <div class='flex flex-col md:flex-row gap-12 md:gap-24'>
+        <p
+          class='text-textDark leading-8 md:leading-9 text-center md:text-left order-1 md:order-none'
+        >
+          Hello everyone! I am a Frontend Developer specialized in building web
+          applications with React. Over the past year, I have contributed to the
+          development of a web platform to promote tourism in our region. This
+          experience has taught me a lot about technical skills and
+          collaboration with others. For this new year, I am looking forward to
+          apply everything I've learned to new projects, tackle new challenges,
+          and continue to grow professionally while working with talented people
+          in the tech field.
+        </p>
+        <img
+          src='/profile.jpg'
+          alt='profile picture'
+          class='w-56 h-56 mt-4 mx-auto'
+        />
+      </div>
+
+      <!-- socials -->
+      <div class='flex gap-4 items-center mx-auto md:mx-0'>
+        <p class='text-textDark'>Find me on:</p>
+        <div class='flex gap-2.5'>
+          <Icon name='ant-design:linkedin-filled' />
+          <Icon name='ri:facebook-box-fill' />
+          <Icon name='mdi:github' />
+          <Icon name='ph:codesandbox-logo-light' />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  [astro-icon] {
+    color: #e2e8ff;
+    width: 1.35rem;
+  }
+</style>
