@@ -3,4 +3,4 @@
 
 export const SITE_TITLE = 'Joan Gavelán | Front End Developer'
 export const SITE_DESCRIPTION =
-  "Welcome to my personal site! I'm Joan and I'm a frontend developer specialized in building web applications with React. Here you will be able to find basic information about me as well as some of my projects."
+  "Welcome to my personal website! My name is Joan, and I specialize in front-end development with a focus on building web applications using React. On this site, you'll find an overview of my background and a showcase of some of my most recent projects."
