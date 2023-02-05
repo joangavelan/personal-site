@@ -53,3 +53,7 @@ img {
 ::-webkit-scrollbar-thumb:hover {
   background: #384369;
 }
+
+.section {
+  @apply grid place-items-center px-7 py-20 md:py-32 xl:py-44;
+}
