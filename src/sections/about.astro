@@ -1,6 +1,6 @@
 ---
 import Heading from '../components/heading.astro'
-import { Icon } from 'astro-icon'
+import Socials from '../components/socials.astro'
 ---
 
 <section id='about' class='section'>
@@ -33,39 +33,8 @@ import { Icon } from 'astro-icon'
       <!-- social icons -->
       <div class='flex gap-4 items-center mx-auto md:mx-0'>
         <p class='text-textDark'>Find me on:</p>
-        <div class='flex gap-3'>
-          <!-- linkedin -->
-          <a href='https://www.linkedin.com/in/joangavelan/' target='_blank'>
-            <Icon name='ant-design:linkedin-filled' />
-          </a>
-          <!-- facebook -->
-          <a href='https://www.facebook.com/JoanGavelan/' target='_blank'>
-            <Icon name='ri:facebook-box-fill' />
-          </a>
-          <!-- github -->
-          <a href='https://github.com/joangavelan' target='_blank'>
-            <Icon name='mdi:github' />
-          </a>
-          <!-- codesandbox -->
-          <a href='https://codesandbox.io/u/joangavelan' target='_blank'>
-            <Icon name='ph:codesandbox-logo-light' />
-          </a>
-          <!-- stackoverflow -->
-          <a
-            href='https://stackoverflow.com/users/14417099/joan-gavel%c3%a1n'
-            target='_blank'
-          >
-            <Icon name='mdi:stackoverflow' />
-          </a>
-        </div>
+        <dv class='flex gap-3'><Socials /></dv>
       </div>
     </div>
   </div>
 </section>
-
-<style>
-  [astro-icon] {
-    color: #e2e8ff;
-    width: 1.35rem;
-  }
-</style>

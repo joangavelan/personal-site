@@ -1,0 +1,29 @@
+---
+import { Icon } from 'astro-icon'
+
+const socials = [
+  ['https://www.linkedin.com/in/joangavelan/', 'ant-design:linkedin-filled'],
+  ['https://www.facebook.com/JoanGavelan/', 'ri:facebook-box-fill'],
+  ['https://github.com/joangavelan', 'mdi:github'],
+  ['https://codesandbox.io/u/joangavelan', 'ph:codesandbox-logo-light'],
+  [
+    'https://stackoverflow.com/users/14417099/joan-gavel%c3%a1n',
+    'mdi:stackoverflow'
+  ]
+]
+---
+
+{
+  socials.map(([href, icon]) => (
+    <a href={href} target='_blank'>
+      <Icon name={icon} />
+    </a>
+  ))
+}
+
+<style>
+  [astro-icon] {
+    color: #e2e8ff;
+    width: 1.35rem;
+  }
+</style>

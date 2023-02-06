@@ -1,0 +1,93 @@
+---
+import Socials from './socials.astro'
+import { Icon } from 'astro-icon'
+---
+
+<!-- socials -->
+<div class='block fixed left-12 top-1/2 -translate-y-1/2'>
+  <div class='flex flex-col gap-8'>
+    <Socials />
+  </div>
+</div>
+
+<!-- email -->
+<div class='block fixed -right-16 top-1/2 -translate-y-1/2'>
+  <p
+    id='email'
+    class='text-textDark block rotate-90 tracking-[.2rem] bg-none outline-none border-none'
+  >
+    joangavelan@gmail.com
+  </p>
+</div>
+
+<!-- custom cursor -->
+<div
+  id='custom-cursor'
+  class='hidden text-white text-[11px] font-semibold absolute top-32 left-72 -translate-x-1/2 -translate-y-1/2 w-[60px] h-[60px] pointer-events-none'
+>
+  <div
+    id='click-to-copy'
+    class='grid place-items-center h-full text-center bg-blue'
+  >
+    <p>CLICK <br /> TO COPY</p>
+  </div>
+
+  <div
+    id='copied'
+    class='hidden flex-col gap-[1px] items-center justify-center h-full bg-green-600'
+  >
+    <p>COPIED</p>
+    <Icon name='mdi:check-circle-outline' />
+  </div>
+</div>
+
+<style>
+  #custom-cursor {
+    clip-path: polygon(
+      20% 0%,
+      80% 0%,
+      100% 20%,
+      100% 80%,
+      80% 100%,
+      20% 100%,
+      0% 80%,
+      0% 20%
+    );
+  }
+
+  [astro-icon] {
+    width: 1.1rem;
+  }
+</style>
+
+<script>
+  const email = document.getElementById('email') as HTMLParagraphElement
+  const customCursor = document.getElementById(
+    'custom-cursor'
+  ) as HTMLDivElement
+  const clickToCopyEl = customCursor.querySelector('#click-to-copy')
+  const copiedEl = customCursor.querySelector('#copied')
+
+  email.addEventListener('click', async () => {
+    await navigator.clipboard.writeText(email.textContent ?? '')
+    clickToCopyEl?.classList.replace('grid', 'hidden')
+    copiedEl?.classList.replace('hidden', 'flex')
+  })
+
+  email.addEventListener('mouseenter', () => {
+    customCursor.style.display = 'block'
+    email.style.cursor = 'none'
+  })
+
+  email.addEventListener('mouseleave', () => {
+    customCursor.style.display = 'none'
+    email.style.cursor = 'default'
+    clickToCopyEl?.classList.replace('hidden', 'grid')
+    copiedEl?.classList.replace('flex', 'hidden')
+  })
+
+  email.addEventListener('mousemove', (e) => {
+    customCursor.style.left = e.pageX + 'px'
+    customCursor.style.top = e.pageY + 'px'
+  })
+</script>
