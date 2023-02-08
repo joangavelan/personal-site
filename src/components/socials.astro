@@ -6,18 +6,14 @@ const socials = [
   ['https://www.facebook.com/JoanGavelan/', 'ri:facebook-box-fill'],
   ['https://github.com/joangavelan', 'mdi:github'],
   ['https://codesandbox.io/u/joangavelan', 'ph:codesandbox-logo-light'],
-  [
-    'https://stackoverflow.com/users/14417099/joan-gavel%c3%a1n',
-    'mdi:stackoverflow'
-  ]
+  ['https://stackoverflow.com/users/14417099/joan-gavel%c3%a1n', 'mdi:stackoverflow']
 ]
 ---
 
 {
   socials.map(([href, icon]) => (
     <a href={href} target='_blank'>
-      <Icon name={icon} class='text-textClear w-[1.35rem]'/>
+      <Icon name={icon} class='text-textClear w-[1.35rem]' />
     </a>
   ))
 }
-

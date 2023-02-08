@@ -39,12 +39,12 @@ img {
 }
 
 a:hover {
-  color: #0080FF;
+  color: #0080ff;
   transition: 200ms;
 }
 
 a:hover svg {
-  color: #0080FF ;
+  color: #0080ff;
 }
 
 svg {
@@ -75,7 +75,7 @@ svg {
 
 @layer components {
   .readme-content {
-    @apply  relative text-textDark h-full py-4 px-5 overflow-auto [&>h5]:readme-headings [&>p]:readme-paragraphs [&>ul]:readme-lists [&>ol]:readme-lists [&>ul]:list-disc [&>ol]:list-decimal [&>ol>li]:pl-1 [&_a]:readme-links;
+    @apply relative text-textDark h-full py-4 px-5 overflow-auto [&>h5]:readme-headings [&>p]:readme-paragraphs [&>ul]:readme-lists [&>ol]:readme-lists [&>ul]:list-disc [&>ol]:list-decimal [&>ol>li]:pl-1 [&_a]:readme-links;
   }
   .readme-headings {
     @apply text-base md:text-lg font-semibold;
@@ -99,7 +99,7 @@ svg {
     @apply bg-navyBlue hover:text-blue;
   }
   .close-drawer-icon {
-    @apply  bg-blue hover:text-navyBlue;
+    @apply bg-blue hover:text-navyBlue;
   }
   .reading-progress-bar {
     @apply absolute bottom-0 left-0 h-0.5 bg-blue;
