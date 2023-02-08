@@ -54,6 +54,41 @@ img {
   background: #384369;
 }
 
-.section {
-  @apply grid place-items-center px-7 py-20 md:py-32 xl:py-44;
+@layer utilities {
+  .section {
+    @apply grid place-items-center px-7 py-20 md:py-32 xl:py-44;
+  }
+}
+
+@layer components {
+  .readme-content {
+    @apply  relative text-textDark h-full py-4 px-5 overflow-auto [&>h5]:readme-headings [&>p]:readme-paragraphs [&>ul]:readme-lists [&>ol]:readme-lists [&>ul]:list-disc [&>ol]:list-decimal [&>ol>li]:pl-1 [&_a]:readme-links;
+  }
+  .readme-headings {
+    @apply text-base md:text-lg font-semibold;
+  }
+  .readme-paragraphs {
+    @apply text-[.85rem] md:text-[.95rem] leading-[1.8] mt-4 mb-8;
+  }
+  .readme-lists {
+    @apply text-sm md:text-base flex flex-col gap-2.5 leading-[1.75] pl-[17px] mt-4 mb-8;
+  }
+  .readme-links {
+    @apply underline-offset-2 underline;
+  }
+  .drawer {
+    @apply flex flex-col absolute top-0 w-full md:w-[47%] -right-[100%] md:-right-[47%] h-full bg-navyBlue border border-[#1c2340];
+  }
+  .drawer-trigger {
+    @apply w-7 md:w-10 text-textClear absolute top-1/2 -translate-y-1/2 cursor-pointer z-10 [&>path]:translate-x-[1.5px];
+  }
+  .open-drawer-icon {
+    @apply bg-navyBlue hover:text-blue;
+  }
+  .close-drawer-icon {
+    @apply  bg-blue hover:text-navyBlue;
+  }
+  .reading-progress-bar {
+    @apply absolute bottom-0 left-0 h-0.5 bg-blue;
+  }
 }

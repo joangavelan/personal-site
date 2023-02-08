@@ -1,0 +1,66 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { Icon } from 'astro-icon'
+
+type Project = CollectionEntry<'projects'> & { index: number }
+
+const { render, data, index } = Astro.props as Project
+
+const { title, description, image, site_url } = data
+
+const { Content } = await render()
+---
+
+<article class='project flex flex-col gap-10'>
+  <div>
+    <div class='flex items-center gap-2 mb-4'>
+      <h2 class='text-textClear text-xl'>{`0${index + 1}. `}{title}</h2>
+      <a href={site_url} target='_blank'>
+        <Icon name='ic:twotone-open-in-new' class='text-textDark w-4' />
+      </a>
+    </div>
+
+    <p class='text-textDark'>{description}</p>
+  </div>
+
+  <!-- image, drawer and trigger container -->
+  <div class='relative'>
+    <!-- image and drawer container -->
+    <div class='relative overflow-hidden'>
+      <img src={image} alt={title + ' app thumbnail'} />
+
+      <!-- project drawer -->
+      <div
+        class='drawer'
+      >
+        <!-- readme -->
+        <div class='relative text-center text-textDark border-b border-[#1c2340] p-4'>
+          <p class='text-sm md:text-base'>README.md</p>
+          <div class='reading-progress-bar'></div>
+        </div>
+
+        <div class='readme-content'>
+          <Content />
+        </div>
+      </div>
+    </div>
+
+    <!-- open/close drawer trigger -->
+    <Icon
+      title='Learn more'
+      name='ic:outline-arrow-left'
+      class='open-drawer-icon drawer-trigger block right-0'
+    />
+    <Icon
+      title='Learn more'
+      name='ic:outline-arrow-right'
+      class='close-drawer-icon drawer-trigger hidden right-[100%] md:right-[47%]'
+    />
+  </div>
+</article>
+
+<style>
+  [astro-icon] {
+    clip-path: polygon(30% 0%, 100% 0, 100% 30%, 100% 70%, 100% 100%, 30% 100%, 0% 70%, 0% 30%);
+  }
+</style>

@@ -1,0 +1,77 @@
+---
+import { getCollection } from 'astro:content'
+import Heading from '../components/heading.astro'
+import Project from '../components/project.astro'
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+)
+---
+
+<section id='projects' class='section'>
+  <div class='max-w-[65rem] flex flex-col gap-24'>
+    <Heading title='Projects' />
+
+    <div id='project-list' class='flex flex-col gap-24'>
+      {projects.map((project, index) => <Project {...project} index={index} />)}
+    </div>
+  </div>
+</section>
+
+<script>
+  const projectList = document.getElementById('project-list') as HTMLElement
+
+  projectList.addEventListener('click', (e) => {
+  const target = e.target as HTMLElement | null;
+
+  if(!target) return;
+
+  if (target.matches('.drawer-trigger') || target?.parentElement?.matches('.drawer-trigger')) {
+    const parentProject = target.closest('.project') as HTMLElement;
+    const drawer = parentProject.querySelector('.drawer') as HTMLDivElement;
+    const readingProgressBar = parentProject.querySelector(
+      '.reading-progress-bar'
+    ) as HTMLDivElement;
+    const readmeContent = parentProject.querySelector(
+      '.readme-content'
+    ) as HTMLDivElement;
+    const openDrawerIcon = parentProject.querySelector(
+      '.open-drawer-icon'
+    ) as HTMLElement;
+    const closeDrawerIcon = parentProject.querySelector(
+      '.close-drawer-icon'
+    ) as HTMLElement;
+
+    if (target.classList.contains('open-drawer-icon') || target.parentElement?.classList.contains('open-drawer-icon')) {
+      openDrawer();
+    }
+
+    if (target.classList.contains('close-drawer-icon') || target.parentElement?.classList.contains('close-drawer-icon')) {
+      closeDrawer();
+    }
+
+    function openDrawer() {
+      drawer.classList.remove('-right-[100%]', 'md:-right-[47%]');
+      drawer.classList.add('right-0');
+      openDrawerIcon.classList.replace('block', 'hidden');
+      closeDrawerIcon.classList.replace('hidden', 'block');
+      readmeContent.addEventListener('scroll', trackReadingProgress);
+    }
+
+    function closeDrawer() {
+      drawer.classList.remove('right-0');
+      drawer.classList.add('-right-[100%]', 'md:-right-[47%]');
+      openDrawerIcon.classList.replace('hidden', 'block');
+      closeDrawerIcon.classList.replace('block', 'hidden');
+      readmeContent.removeEventListener('scroll', trackReadingProgress);
+    }
+
+    function trackReadingProgress() {
+      const totalHeight = readmeContent.scrollHeight - readmeContent.clientHeight;
+      const progress = (readmeContent.scrollTop / totalHeight) * 100;
+      readingProgressBar.style.width = `${progress}%`;
+    }
+  }
+});
+
+</script>
