@@ -16,14 +16,8 @@ const socials = [
 {
   socials.map(([href, icon]) => (
     <a href={href} target='_blank'>
-      <Icon name={icon} />
+      <Icon name={icon} class='text-textClear w-[1.35rem]'/>
     </a>
   ))
 }
 
-<style>
-  [astro-icon] {
-    color: #e2e8ff;
-    width: 1.35rem;
-  }
-</style>

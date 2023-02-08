@@ -38,6 +38,19 @@ img {
   user-select: none;
 }
 
+a:hover {
+  color: #0080FF;
+  transition: 200ms;
+}
+
+a:hover svg {
+  color: #0080FF ;
+}
+
+svg {
+  transition: 200ms;
+}
+
 ::-webkit-scrollbar {
   width: 9px;
 }
