@@ -1,13 +1,45 @@
----
-const today = new Date()
----
+<footer class='flex justify-between text-textDark p-7 xl:px-20 md:mb-5 text-sm md:text-base'>
+  <!-- location and time -->
+  <div class='flex gap-2 md:gap-8'>
+    <p>PERU</p>
+    <div id='clock' class='text-textClear w-11'>00:00</div>
+  </div>
 
-<footer>
-  &copy; {today.getFullYear()} YOUR NAME HERE. All rights reserved.
+  <!-- credits -->
+  <p>
+    <span class='hidden md:inline'>Designed &</span> Built by
+    <a class='inline' href='https://www.linkedin.com/in/joangavelan/' target='bl'
+      >Joan Gavelán<a></a></a
+    >
+  </p>
+
+  <!-- site github repo -->
+  <a
+    class='hidden md:inline-block'
+    href='https://github.com/joangavelan/personal-site'
+    target='_blank'>Github</a
+  >
 </footer>
-<style>
-  footer {
-    padding: 25px;
-    text-align: center;
+
+<script>
+  function updateClock() {
+    let now = new Date()
+    let offset = -300
+    let timeInLima = new Date(now.getTime() + now.getTimezoneOffset() * 60000 + offset * 60000)
+    let hours = timeInLima.getHours() as number | string
+    let minutes = timeInLima.getMinutes() as number | string
+    let clock = document.getElementById('clock') as HTMLDivElement
+
+    if (hours < 10) {
+      hours = '0' + hours
+    }
+
+    if (minutes < 10) {
+      minutes = '0' + minutes
+    }
+
+    clock.innerHTML = hours + ':' + minutes
   }
-</style>
+
+  setInterval(updateClock, 1000)
+</script>
