@@ -73,13 +73,10 @@ code {
   background: #293459;
 }
 
-@layer utilities {
+@layer components {
   .section {
     @apply grid place-items-center px-7 py-20 md:py-32 xl:py-44;
   }
-}
-
-@layer components {
   .readme-content {
     @apply relative text-textDark h-full py-4 px-5 overflow-auto [&>h5]:readme-headings [&>p]:readme-paragraphs [&>ul]:readme-lists [&>ol]:readme-lists [&>ul]:list-disc [&>ol]:list-decimal [&>ol>li]:pl-1 [&_a]:readme-links;
   }
@@ -137,5 +134,8 @@ code {
   }
   .nav-container nav a {
     @apply text-[.95rem];
+  }
+  .button {
+    @apply text-center border border-blue hover:bg-blue text-textClear font-medium hover:text-navyBlue duration-300;
   }
 }
