@@ -1,0 +1,24 @@
+---
+import { email } from '../consts'
+---
+
+<section class='px-7 xl:px-20'>
+  <div
+    class='w-full grid lg:grid-cols-[.8fr_0.7fr_0.5fr] xl:grid-cols-[1fr_0.6fr_0.4fr] items-center justify-center content-center gap-8 border-y border-[#677194] py-10 text-center lg:text-left min-w-0'
+  >
+    <h2
+      class='text-textClear font-medium leading-[1] lg:leading-[0.8] text-[2rem] md:text-[4rem] lg:text-[5.2vw] xl:text-[6.2vw] 2xl:text-[6.5vw]'
+    >
+      GET IN TOUCH
+    </h2>
+    <p class='text-textDark lg:text-[.85rem] xl:text-[1.05vw] leading-[1.7]'>
+      If you'd like to discuss about a new idea or proposal, or you just want to have a chat, please
+      do not hesitate to contact me.
+    </p>
+    <a
+      href={'mailto:' + email}
+      class='button py-4 text-[.85rem] xl:text-[1vw] mx-auto px-12 md:px-20 lg:px-0 lg:mx-0'
+      >SEND EMAIL</a
+    >
+  </div>
+</section>
