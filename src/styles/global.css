@@ -104,4 +104,29 @@ svg {
   .reading-progress-bar {
     @apply absolute bottom-0 left-0 h-0.5 bg-blue;
   }
+
+  .hamburger {
+    @apply flex flex-col gap-3 md:hidden z-20;
+  }
+  .hamburger-line {
+    @apply w-9 h-0.5 bg-textClear transition-all duration-300;
+  }
+  .hamburger-open .hamburger-line:first-of-type {
+    @apply rotate-45 translate-y-1.5;
+  }
+  .hamburger-open .hamburger-line:last-of-type {
+    @apply -rotate-45 -translate-y-2;
+  }
+  .nav-container {
+    @apply flex flex-col md:flex-row items-center justify-center text-center gap-14 fixed md:static w-2/3 md:w-min h-full top-0 -right-2/3 text-textClear bg-navyBlue shadow-sm md:shadow-none shadow-[#0e1b2a] transition-all duration-300;
+  }
+  .nav-container.open {
+    @apply right-0;
+  }
+  .nav-container nav {
+    @apply flex flex-col md:flex-row gap-14 w-full shadow-inner;
+  }
+  .nav-container nav a {
+    @apply text-[.95rem];
+  }
 }

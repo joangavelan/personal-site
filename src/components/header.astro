@@ -3,7 +3,28 @@ import Logo from './logo.astro'
 import Nav from './nav.astro'
 ---
 
-<header class='text-textClear flex justify-between items-center py-5 px-8 lg:py-7 lg:px-12 w-full'>
+<header
+  id='header'
+  class='h-[75px] fixed md:top-0 z-30 bg-navyBlue text-textClear flex justify-between items-center px-8 lg:px-12 w-full shadow-sm shadow-[#0e1b2a] transition-all duration-200'
+>
   <Logo />
   <Nav />
 </header>
+
+<script>
+  const header = document.getElementById('header') as HTMLElement
+
+  let lastScrollTop = 1
+
+  window.addEventListener('scroll', () => {
+    const currentScrollTop = window.scrollY || document.documentElement.scrollTop
+
+    if (currentScrollTop > lastScrollTop) {
+      header.classList.replace('md:top-0', 'md:-top-[75px]')
+    } else {
+      header.classList.replace('md:-top-[75px]', 'md:top-0')
+    }
+
+    lastScrollTop = currentScrollTop > 75 ? currentScrollTop : 75
+  })
+</script>

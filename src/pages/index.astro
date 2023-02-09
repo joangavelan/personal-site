@@ -6,6 +6,7 @@ import About from '../sections/about.astro'
 import Experience from '../sections/experience.astro'
 import Laterals from '../components/laterals.astro'
 import Projects from '../sections/projects.astro'
+import Header from '../components/header.astro'
 ---
 
 <!DOCTYPE html>
@@ -14,6 +15,7 @@ import Projects from '../sections/projects.astro'
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <body class='bg-navyBlue'>
+    <Header />
     <Hero />
     <About />
     <Experience />

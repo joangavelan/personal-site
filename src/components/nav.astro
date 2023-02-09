@@ -1,17 +1,27 @@
----
-import Hamburger from './hamburger.astro'
----
-
-<div class='hidden lg:flex items-center gap-14'>
-  <nav class='flex gap-14'>
+<div class='nav-container'>
+  <nav>
     <a href='#about'>About</a>
     <a href='#experience'>Experience</a>
     <a href='#projects'>Projects</a>
     <a href='#contact'>Contact</a>
   </nav>
-  <button class='px-12 py-1.5 border border-blue hover:bg-blue hover:text-navyBlue duration-200'
+  <button
+    class='text-[.9rem] px-10 py-1.5 border border-blue hover:bg-blue hover:text-navyBlue font-medium duration-300'
     >Resume</button
   >
 </div>
 
-<Hamburger />
+<div class='hamburger'>
+  <div class='hamburger-line'></div>
+  <div class='hamburger-line'></div>
+</div>
+
+<script>
+  const hamburger = document.querySelector('.hamburger') as HTMLDivElement
+  const navContainer = document.querySelector('.nav-container') as HTMLDivElement
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('hamburger-open')
+    navContainer.classList.toggle('open')
+  })
+</script>
