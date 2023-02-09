@@ -67,6 +67,12 @@ svg {
   background: #384369;
 }
 
+code {
+  font-size: 0.85rem;
+  padding: 1px;
+  background: #293459;
+}
+
 @layer utilities {
   .section {
     @apply grid place-items-center px-7 py-20 md:py-32 xl:py-44;
@@ -84,22 +90,25 @@ svg {
     @apply text-[.85rem] md:text-[.95rem] leading-[1.8] mt-4 mb-8;
   }
   .readme-lists {
-    @apply text-sm md:text-base flex flex-col gap-2.5 leading-[1.75] pl-[17px] mt-4 mb-8;
+    @apply text-[.85rem] md:text-[.95rem] flex flex-col gap-2.5 leading-[1.75] pl-[17px] mt-4 mb-8;
   }
   .readme-links {
     @apply underline-offset-2 underline;
   }
   .drawer {
-    @apply flex flex-col absolute top-0 w-full md:w-[47%] -right-[100%] md:-right-[47%] h-full bg-navyBlue border border-[#1c2340];
+    @apply flex flex-col absolute top-0 w-full md:w-[47%] -right-[100%] md:-right-[47%] h-full bg-navyBlue border border-[#1c2340] transition-all duration-300;
+  }
+  .drawer.open {
+    @apply right-[0];
   }
   .drawer-trigger {
-    @apply w-7 md:w-10 text-textClear absolute top-1/2 -translate-y-1/2 cursor-pointer z-10 [&>path]:translate-x-[1.5px];
+    @apply w-7 md:w-10 text-textClear absolute top-1/2 -translate-y-1/2 cursor-pointer z-10 [&>path]:translate-x-[1.5px] bg-navyBlue hover:text-blue transition-all duration-300 right-0;
   }
-  .open-drawer-icon {
-    @apply bg-navyBlue hover:text-blue;
+  .drawer-trigger.open {
+    @apply bg-blue hover:text-navyBlue right-full md:right-[47%];
   }
-  .close-drawer-icon {
-    @apply bg-blue hover:text-navyBlue;
+  .drawer-trigger.open > path {
+    @apply rotate-180 origin-center;
   }
   .reading-progress-bar {
     @apply absolute bottom-0 left-0 h-0.5 bg-blue;

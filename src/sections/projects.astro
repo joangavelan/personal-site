@@ -19,7 +19,7 @@ const projects = (await getCollection('projects')).sort(
 </section>
 
 <script>
-  const projectList = document.getElementById('project-list') as HTMLElement
+  const projectList = document.getElementById('project-list')!
 
   projectList.addEventListener('click', (e) => {
     const target = e.target as HTMLElement | null
@@ -28,42 +28,30 @@ const projects = (await getCollection('projects')).sort(
 
     if (target.matches('.drawer-trigger') || target?.parentElement?.matches('.drawer-trigger')) {
       const parentProject = target.closest('.project') as HTMLElement
-      const drawer = parentProject.querySelector('.drawer') as HTMLDivElement
-      const readingProgressBar = parentProject.querySelector(
-        '.reading-progress-bar'
-      ) as HTMLDivElement
-      const readmeContent = parentProject.querySelector('.readme-content') as HTMLDivElement
-      const openDrawerIcon = parentProject.querySelector('.open-drawer-icon') as HTMLElement
-      const closeDrawerIcon = parentProject.querySelector('.close-drawer-icon') as HTMLElement
+      const drawer = parentProject.querySelector('.drawer') as HTMLElement
+      const readingProgressBar = parentProject.querySelector('.reading-progress-bar') as HTMLElement
+      const readmeContent = parentProject.querySelector('.readme-content') as HTMLElement
+      const drawerTrigger = parentProject.querySelector('.drawer-trigger') as HTMLElement
 
       if (
-        target.classList.contains('open-drawer-icon') ||
-        target.parentElement?.classList.contains('open-drawer-icon')
+        target.classList.contains('drawer-trigger') ||
+        target.parentElement?.classList.contains('drawer-trigger')
       ) {
-        openDrawer()
+        toggleDrawer()
       }
 
-      if (
-        target.classList.contains('close-drawer-icon') ||
-        target.parentElement?.classList.contains('close-drawer-icon')
-      ) {
-        closeDrawer()
+      function toggleDrawer() {
+        drawer.classList.toggle('open')
+        drawerTrigger.classList.toggle('open')
+        toggleProgressBarListener()
       }
 
-      function openDrawer() {
-        drawer.classList.remove('-right-[100%]', 'md:-right-[47%]')
-        drawer.classList.add('right-0')
-        openDrawerIcon.classList.replace('block', 'hidden')
-        closeDrawerIcon.classList.replace('hidden', 'block')
-        readmeContent.addEventListener('scroll', trackReadingProgress)
-      }
-
-      function closeDrawer() {
-        drawer.classList.remove('right-0')
-        drawer.classList.add('-right-[100%]', 'md:-right-[47%]')
-        openDrawerIcon.classList.replace('hidden', 'block')
-        closeDrawerIcon.classList.replace('block', 'hidden')
-        readmeContent.removeEventListener('scroll', trackReadingProgress)
+      function toggleProgressBarListener() {
+        if (drawer.classList.contains('open')) {
+          readmeContent.addEventListener('scroll', trackReadingProgress)
+        } else {
+          readmeContent.removeEventListener('scroll', trackReadingProgress)
+        }
       }
 
       function trackReadingProgress() {
