@@ -26,5 +26,25 @@ import Footer from '../components/footer.astro'
     <Footer />
 
     <Laterals />
+
+    <script>
+      const callback = (entries: IntersectionObserverEntry[]) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate')
+          }
+        })
+      }
+
+      const options: IntersectionObserverInit = {
+        threshold: 0.3
+      }
+
+      const observer = new IntersectionObserver(callback, options)
+
+      const elementsToAnimate = document.querySelectorAll('.element-to-animate')
+
+      elementsToAnimate.forEach((el) => observer.observe(el))
+    </script>
   </body>
 </html>

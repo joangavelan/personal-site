@@ -124,7 +124,7 @@ code {
     @apply -rotate-45 -translate-y-2;
   }
   .nav-container {
-    @apply flex flex-col md:flex-row items-center justify-center text-center gap-14 fixed md:static w-2/3 md:w-min h-full top-0 -right-2/3 text-textClear bg-navyBlue shadow-sm md:shadow-none shadow-[#0e1b2a] transition-all duration-300;
+    @apply flex flex-col md:flex-row items-center justify-center text-center gap-14 fixed md:static w-2/3 md:w-min h-full top-0 -right-2/3 text-textClear bg-navyBlue shadow-sm md:shadow-none shadow-[#0e1b2a] transition-all [@media(max-width:30em)]:!duration-300;
   }
   .nav-container.open {
     @apply right-0;
@@ -137,5 +137,17 @@ code {
   }
   .button {
     @apply text-center border border-blue hover:bg-blue text-textClear font-medium hover:text-navyBlue duration-300;
+  }
+  .element-to-animate {
+    @apply opacity-0 transition-all duration-[1200ms];
+  }
+  .element-to-animate.animate-from-top {
+    @apply -translate-y-5;
+  }
+  .element-to-animate.animate-from-bottom {
+    @apply translate-y-5;
+  }
+  .element-to-animate.animate {
+    @apply opacity-100 translate-y-0;
   }
 }

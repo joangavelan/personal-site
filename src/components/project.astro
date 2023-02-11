@@ -11,7 +11,7 @@ const { title, description, image, site_url } = data
 const { Content } = await render()
 ---
 
-<article class='project flex flex-col gap-10'>
+<article class='project flex flex-col gap-10 element-to-animate animate-from-bottom'>
   <div>
     <div class='flex items-center gap-2 mb-4'>
       <h2 class='text-textClear text-xl'>{`0${index + 1}. `}{title}</h2>

@@ -10,7 +10,7 @@ const projects = (await getCollection('projects')).sort(
 
 <section id='projects' class='section'>
   <div class='max-w-[65rem] flex flex-col gap-24'>
-    <Heading title='Projects' />
+    <dv class='element-to-animate animate-from-bottom'><Heading title='Projects' /></dv>
 
     <div id='project-list' class='flex flex-col gap-24'>
       {projects.map((project, index) => <Project {...project} index={index} />)}
