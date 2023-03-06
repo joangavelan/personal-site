@@ -44,12 +44,15 @@ const { Content } = await render()
     </div>
 
     <!-- open/close drawer trigger -->
-    <Icon title='Learn more' name='ic:outline-arrow-left' class='drawer-trigger' />
+    <div class='drawer-trigger'>
+      <Icon title='Learn more' name='ic:outline-arrow-left' />
+      <span class='pin'></span>
+    </div>
   </div>
 </article>
 
 <style>
-  [astro-icon] {
+  .drawer-trigger > svg {
     clip-path: polygon(30% 0%, 100% 0, 100% 30%, 100% 70%, 100% 100%, 30% 100%, 0% 70%, 0% 30%);
   }
 </style>

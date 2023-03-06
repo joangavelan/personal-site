@@ -10,7 +10,7 @@ const projects = (await getCollection('projects')).sort(
 
 <section id='projects' class='section'>
   <div class='max-w-[65rem] flex flex-col gap-24'>
-    <dv class='element-to-animate animate-from-bottom'><Heading title='Projects' /></dv>
+    <div class='element-to-animate animate-from-bottom'><Heading title='Projects' /></div>
 
     <div id='project-list' class='flex flex-col gap-24'>
       {projects.map((project, index) => <Project {...project} index={index} />)}
@@ -26,39 +26,36 @@ const projects = (await getCollection('projects')).sort(
 
     if (!target) return
 
-    if (target.matches('.drawer-trigger') || target?.parentElement?.matches('.drawer-trigger')) {
-      const parentProject = target.closest('.project') as HTMLElement
-      const drawer = parentProject.querySelector('.drawer') as HTMLElement
-      const readingProgressBar = parentProject.querySelector('.reading-progress-bar') as HTMLElement
-      const readmeContent = parentProject.querySelector('.readme-content') as HTMLElement
-      const drawerTrigger = parentProject.querySelector('.drawer-trigger') as HTMLElement
+    const parentProject = target.closest('.project') as HTMLElement
+    const drawer = parentProject.querySelector('.drawer') as HTMLElement
+    const readingProgressBar = parentProject.querySelector('.reading-progress-bar') as HTMLElement
+    const readmeContent = parentProject.querySelector('.readme-content') as HTMLElement
+    const drawerTrigger = parentProject.querySelector('.drawer-trigger') as HTMLElement
+    const pin = parentProject.querySelector('.pin') as HTMLElement | null
 
-      if (
-        target.classList.contains('drawer-trigger') ||
-        target.parentElement?.classList.contains('drawer-trigger')
-      ) {
-        toggleDrawer()
-      }
+    function trackReadingProgress() {
+      const totalHeight = readmeContent.scrollHeight - readmeContent.clientHeight
+      const progress = (readmeContent.scrollTop / totalHeight) * 100
+      readingProgressBar.style.width = `${progress}%`
+    }
 
-      function toggleDrawer() {
-        drawer.classList.toggle('open')
-        drawerTrigger.classList.toggle('open')
-        toggleProgressBarListener()
+    function toggleProgressBarListener() {
+      if (drawer.classList.contains('open')) {
+        readmeContent.addEventListener('scroll', trackReadingProgress)
+      } else {
+        readmeContent.removeEventListener('scroll', trackReadingProgress)
       }
+    }
 
-      function toggleProgressBarListener() {
-        if (drawer.classList.contains('open')) {
-          readmeContent.addEventListener('scroll', trackReadingProgress)
-        } else {
-          readmeContent.removeEventListener('scroll', trackReadingProgress)
-        }
-      }
+    function toggleDrawer() {
+      drawer.classList.toggle('open')
+      drawerTrigger.classList.toggle('open')
+      toggleProgressBarListener()
+    }
 
-      function trackReadingProgress() {
-        const totalHeight = readmeContent.scrollHeight - readmeContent.clientHeight
-        const progress = (readmeContent.scrollTop / totalHeight) * 100
-        readingProgressBar.style.width = `${progress}%`
-      }
+    if (target === drawerTrigger || target.closest('.drawer-trigger')) {
+      toggleDrawer()
+      if (pin) pin.style.display = 'none'
     }
   })
 </script>

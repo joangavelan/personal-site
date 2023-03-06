@@ -99,13 +99,22 @@ code {
     @apply right-[0];
   }
   .drawer-trigger {
-    @apply w-7 md:w-10 text-textClear absolute top-1/2 -translate-y-1/2 cursor-pointer z-10 [&>path]:translate-x-[1.5px] bg-navyBlue hover:text-blue transition-all duration-300 right-0;
+    @apply w-7 md:w-10 text-textClear absolute top-1/2 -translate-y-1/2 cursor-pointer z-10 [&>svg>path]:translate-x-[1.5px] transition-all duration-300 right-0;
+  }
+  .drawer-trigger > svg {
+    @apply bg-navyBlue hover:text-blue;
+  }
+  .drawer-trigger.open > svg {
+    @apply bg-blue hover:text-navyBlue;
   }
   .drawer-trigger.open {
-    @apply bg-blue hover:text-navyBlue right-full md:right-[47%];
+    @apply right-full md:right-[47%];
   }
-  .drawer-trigger.open > path {
+  .drawer-trigger.open > svg > path {
     @apply rotate-180 origin-center;
+  }
+  .pin {
+    @apply absolute -top-1 left-0.5 w-2.5 h-2.5 md:w-3.5 md:h-3.5 bg-red-600 rounded-full;
   }
   .reading-progress-bar {
     @apply absolute bottom-0 left-0 h-0.5 bg-blue;
